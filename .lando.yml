@@ -1,4 +1,4 @@
-name: my-laravel-template
+name: crud
 recipe: laravel
 config:
   webroot: public
@@ -11,6 +11,8 @@ services:
       - apt-get update -y
 
   database:
-    type: postgres
+    type: mysql
     creds:
+      user: unifil
+      password: 123456
       database: laravel
