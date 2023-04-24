@@ -9,26 +9,22 @@
 </head>
 
 <body>
-    <h1>Lista de Posts</h1>
+    <h1>Lista Posts</h1>
     <a href="/posts/create">Adicionar post</a>
 
     <ul>
 
         @foreach ($posts as $post)
-            <div style="border: 2px solid black">
                 <h2>{{ $post->title }}</h2>
-                <p>{{ $post->body }}</p>
-                <p>By {{ $users->find($post->user_id)->name }}</p>
-                <p>Category: {{ $categories->find($post->category_id)->name }}</p>
-
-
+                <p>Por: {{ $users->find($post->user_id)->name }}</p>
+                <h5>{{ $categories->find($post->category_id)->name }}</h5>
+                <p>{{ $post->title }}</p>
                 <a href="/posts/edit/{{ $post->id }}">editar</a>
                 <form action="/posts/{{ $post->id }}" method="post">
                     @csrf
                     @method('delete')
                     <button type="submit">Deletar</button>
                 </form>
-            </div>
         @endforeach
     </ul>
     <a href="/..">voltar</a>
